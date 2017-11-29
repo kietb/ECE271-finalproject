@@ -1,6 +1,7 @@
 module shiftreg (input logic clk, input logic data, output logic [10:0] out);
 
 	logic [10:0] tmp;
+	logic [3:0] count = 0;
 
 	always_ff @ (posedge clk)
 	begin
@@ -18,6 +19,13 @@ module shiftreg (input logic clk, input logic data, output logic [10:0] out);
 
 		//tmp = {tmp[9:0], data};
 	end
-	assign out = tmp;	
+
+	always_ff @ (posedge clk)
+	begin
+		if (count == 11)
+			assign out = tmp;
+		else
+			count <= count + 1;
+	end	
 
 endmodule
