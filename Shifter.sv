@@ -1,9 +1,12 @@
-module shiftreg (input logic clk, input logic data, output logic [10:0] out);
+/*Author: Kenneth Truong
+ *ECE 271 Final Project
+ *Fall 2017 Oregon State University*/
+module shiftreg (input logic kb_clk, input logic data, output logic [10:0] parallel_dat);
 
 	logic [10:0] tmp;
 	logic [3:0] count = 0;
 
-	always_ff @ (posedge clk)
+	always_ff @ (posedge kb_clk)
 	begin
 		tmp[10] <= tmp[9];
 		tmp[9] <= tmp[8];
@@ -20,10 +23,10 @@ module shiftreg (input logic clk, input logic data, output logic [10:0] out);
 		//tmp = {tmp[9:0], data};
 	end
 
-	always_ff @ (posedge clk)
+	always_ff @ (posedge kb_clk)
 	begin
 		if (count == 11)
-			assign out = tmp;
+			assign parallel_dat = tmp;
 		else
 			count <= count + 1;
 	end	
