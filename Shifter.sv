@@ -26,7 +26,7 @@ module shiftreg (input logic kb_clk, input logic data, output logic [10:0] paral
 	always_ff @ (posedge kb_clk)
 	begin
 		if (count == 11)
-			assign parallel_dat = tmp;
+			parallel_dat = tmp;
 		else
 			count <= count + 1;
 	end	

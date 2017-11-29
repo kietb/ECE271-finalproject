@@ -39,7 +39,7 @@ OSCH # ("2.08") osc_int (	//Specify the operating clock speed 2.08MHz
 	//Using module from other files
 	
 	//Generating different frequencies for the notes
-clock_generate generator(
+clk_generate generator(
 	.clk_i(clk),
 	.clk_A3(clk_A3),
 	.clk_B3(clk_B3),
@@ -51,7 +51,7 @@ clock_generate generator(
 	.clk_A4(clk_A4));
 
 	//The different clocks get passed into a mux
-clockMux clock_select( 
+mux clock_select( 
 	.select(sel),		//Input select signal
 	.clk_A3(clk_A3),	//Input clock signals
 	.clk_B3(clk_B3),
@@ -86,11 +86,7 @@ led_decoder led(
 sinWave wave_generator(
 	.s_clk(sel_clk),	//Input selected clock
 	.wave(out));		//Generate a wave accordingly
-	
 
 
 
-
-
-	
-
+endmodule

@@ -1,18 +1,18 @@
-module clk_counter(
+module clk_generate(
 	input logic clk_i, //Clock driving the counter. 2.08MHz by default.
 	input logic reset_n, //Active low reset.
 	
 	output logic clk_A3, clk_B3, clk_C4, clk_D4, clk_E4, clk_F4, clk_G4, clk_A4 
 );
 
-logic [0:5] counter1; //Max value is ~18.
-logic [0:5] counter2;
-logic [0:5] counter3;
-logic [0:5] counter4;
-logic [0:5] counter5;
-logic [0:5] counter6;
-logic [0:5] counter7;
-logic [0:5] counter8;
+logic [4:0] counter1; //Max value is ~18.
+logic [4:0] counter2;
+logic [4:0] counter3;
+logic [4:0] counter4;
+logic [4:0] counter5;
+logic [4:0] counter6;
+logic [4:0] counter7;
+logic [4:0] counter8;
 
 always_ff @ (posedge clk_i, negedge reset_n)
 	begin
@@ -47,52 +47,54 @@ always_ff @ (posedge clk_i, negedge reset_n)
 			end
 		
 		else
-			if (counter1 >= 18)
-				begin
-					clk_A3 <= ~clk_A3; //Output clock HIGH/LOW flipped.
-					counter1 <= 0; //Counter is reset.
-				end
+			begin
+				if (counter1 >= 18)
+					begin
+						clk_A3 <= ~clk_A3; //Output clock HIGH/LOW flipped.
+						counter1 <= 0; //Counter is reset.
+					end
 				
-			if (counter2 >= 16)
-				begin
-					clk_B3 <= ~clk_B3; //Output clock HIGH/LOW flipped.
-					counter2 <= 0; //Counter is reset.
-				end
+				if (counter2 >= 16)
+					begin
+						clk_B3 <= ~clk_B3; //Output clock HIGH/LOW flipped.
+						counter2 <= 0; //Counter is reset.
+					end
 				
-			if (counter3 >= 15)
-				begin
-					clk_C4 <= ~clk_C4; //Output clock HIGH/LOW flipped.
-					counter3 <= 0; //Counter is reset.
-				end
+				if (counter3 >= 15)
+					begin
+						clk_C4 <= ~clk_C4; //Output clock HIGH/LOW flipped.
+						counter3 <= 0; //Counter is reset.
+					end
 				
-			if (counter4 >= 13)
-				begin
-					clk_D4 <= ~clk_D4; //Output clock HIGH/LOW flipped.
-					counter4 <= 0; //Counter is reset.
-				end
+				if (counter4 >= 13)
+					begin
+						clk_D4 <= ~clk_D4; //Output clock HIGH/LOW flipped.
+						counter4 <= 0; //Counter is reset.
+					end
 				
-			if (counter5 >= 12)
-				begin
-					clk_E4 <= ~clk_E4; //Output clock HIGH/LOW flipped.
-					counter5 <= 0; //Counter is reset.
-				end
+				if (counter5 >= 12)
+					begin
+						clk_E4 <= ~clk_E4; //Output clock HIGH/LOW flipped.
+						counter5 <= 0; //Counter is reset.
+					end
 				
-			if (counter6 >= 11)
-				begin
-					clk_F4 <= ~clk_F4; //Output clock HIGH/LOW flipped.
-					counter6 <= 0; //Counter is reset.
-				end
+				if (counter6 >= 11)
+					begin
+						clk_F4 <= ~clk_F4; //Output clock HIGH/LOW flipped.
+						counter6 <= 0; //Counter is reset.
+					end
 				
-			if (counter7 >= 10)
-				begin
-					clk_G4 <= ~clk_G4; //Output clock HIGH/LOW flipped.
-					counter7 <= 0; //Counter is reset.
-				end
+				if (counter7 >= 10)
+					begin
+						clk_G4 <= ~clk_G4; //Output clock HIGH/LOW flipped.
+						counter7 <= 0; //Counter is reset.
+					end
 
-			if (counter8 >= 9)
-				begin
-					clk_A4 <= ~clk_A4; //Output clock HIGH/LOW flipped.
-					counter8 <= 0; //Counter is reset.
-				end
+				if (counter8 >= 9)
+					begin
+						clk_A4 <= ~clk_A4; //Output clock HIGH/LOW flipped.
+						counter8 <= 0; //Counter is reset.
+					end
+			end
 	end
 endmodule
