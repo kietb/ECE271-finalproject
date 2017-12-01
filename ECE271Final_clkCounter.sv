@@ -5,14 +5,14 @@ module clk_generate(
 	output logic clk_A3, clk_B3, clk_C4, clk_D4, clk_E4, clk_F4, clk_G4, clk_A4 
 );
 
-logic [4:0] counter1; //Max value is ~18.
-logic [4:0] counter2;
-logic [4:0] counter3;
-logic [4:0] counter4;
-logic [4:0] counter5;
-logic [4:0] counter6;
-logic [4:0] counter7;
-logic [4:0] counter8;
+logic [0:5] counter1; //Max value is ~18.
+logic [0:5] counter2;
+logic [0:5] counter3;
+logic [0:5] counter4;
+logic [0:5] counter5;
+logic [0:5] counter6;
+logic [0:5] counter7;
+logic [0:5] counter8;
 
 always_ff @ (posedge clk_i, negedge reset_n)
 	begin

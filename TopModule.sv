@@ -6,7 +6,10 @@ module Simple_piano_top_module(
 	/*Set input and output here*/
 	input logic data,	//data and clock taken from the keyboard
 	input logic kb_clk,	
+
 	input logic reset_n,	//Active low reset, pull up mode or connected to 3.3V
+
+	//input logic clk,
 	output logic [7:0] out,
 	output logic [6:0] segs
 );
@@ -41,6 +44,7 @@ OSCH # ("2.08") osc_int (	//Specify the operating clock speed 2.08MHz
 	//Generating different frequencies for the notes
 clk_generate generator(
 	.clk_i(clk),
+	.reset_n(reset_n),
 	.clk_A3(clk_A3),
 	.clk_B3(clk_B3),
 	.clk_C4(clk_C4),
